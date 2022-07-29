@@ -1,0 +1,32 @@
+#! /bin/bash
+
+### BEGIN INIT INFO
+# Provides:          nottoday
+# Required-Start:    $network
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+### END INIT INFO
+
+#. /lib/lsb/init-functions
+
+LOG_FILE = /root/idsl/log/daemon.log
+
+case $1 in
+    start|restart|force-reload)
+	/root/idsl/run.sh &
+	;;
+    stop)
+	    echo "$(date): stopped requested. Nothing was done yet" >> $LOG_FILE
+	killall idsl
+    ;;
+    status)
+	    echo "$(date): status requested" >> $LOG_FILE
+        exit 0
+    ;;
+    *)
+        echo "Usage: $0 {start|stop|status|restart|force-reload}" >&2
+        exit 3
+    ;;
+
+esac
