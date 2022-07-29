@@ -1,7 +1,7 @@
 echo "Presion Ctrl + c para cancelar el proceso..."
 rm shells
 touch shells
-
+mkdir /root/idsl/commands/
 time=`date -d "2000-01-01 GMT" '+%s'`
 
 while true;do
